@@ -1,6 +1,8 @@
 :root {
   --default-margin: 0 160px;
-  --default-gap: 12px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
   --br-max: 9999px;
   --primary-color: #2db8a1;
 }

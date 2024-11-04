@@ -2,11 +2,11 @@
   display: flex;
   /* align-items: center; */
   flex-direction: row;
-  gap: var(--default-gap);
+  gap: var(--space-sm);
   align-items: end;
   .user-icon {
-    align-self: center;
-    border-radius: var(--br-max);
+    align-self: center !important;
+    /* border-radius: var(--br-max); */
   }
   .ant-tabs-tab {
     padding-bottom: 18px;

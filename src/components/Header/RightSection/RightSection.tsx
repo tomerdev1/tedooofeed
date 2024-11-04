@@ -1,7 +1,8 @@
 import { Icons } from "../../../icons/icons";
 import "./right-section.css";
 import { Tabs, TabsProps } from "antd";
-import IconWrapper from "../../icon/icon";
+import IconWrapper from "../../IconWrapper";
+import ImageWrapper from "../../ImageWrapper/ImageWrapper";
 
 const RightSection = () => {
   const getIcon = (id: number) => {
@@ -49,12 +50,12 @@ const RightSection = () => {
   return (
     <div className="right-section">
       <Tabs className="custom-tabs" defaultActiveKey="1" items={items} />
-      <img
+      <ImageWrapper
         alt="user logo"
         src="/assets/images/user.jpeg"
-        height={"40px"}
         className="user-icon"
-        width={"40px"}
+        isCircled
+        size={40}
       />
     </div>
   );

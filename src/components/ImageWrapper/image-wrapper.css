@@ -1,0 +1,3 @@
+.isCircled {
+  border-radius: var(--br-max);
+}

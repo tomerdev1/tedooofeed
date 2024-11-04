@@ -1,7 +1,7 @@
 .left-section {
   display: flex;
   flex-direction: row;
-  gap: var(--default-gap);
+  gap: var(--space-sm);
   align-items: center;
   .custom-input {
     border-radius: var(--br-max);

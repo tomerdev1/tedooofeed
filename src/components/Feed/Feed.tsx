@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { FeedData, FeedItemType } from "../../types";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
-import FeedItemWithImpression from "../FeedItemWithImpression";
 import "./feed.css";
+import FeedItem from "../FeedItem/FeedItem";
 
 const Feed: React.FC = () => {
   const [feedItems, setFeedItems] = useState<FeedItemType[]>([]);
@@ -47,7 +47,7 @@ const Feed: React.FC = () => {
   return (
     <div className="feed">
       {feedItems.map((item) => (
-        <FeedItemWithImpression key={item.id} item={item} onLike={handleLike} />
+        <FeedItem key={item.id} item={item} onLike={handleLike} />
       ))}
       {isFetching && <div>Loading more...</div>}
     </div>
