@@ -1,0 +1,11 @@
+.left-section {
+  display: flex;
+  flex-direction: row;
+  gap: var(--default-gap);
+  align-items: center;
+  .custom-input {
+    border-radius: var(--br-max);
+    background-color: #f4f5f5;
+    border: none;
+  }
+}

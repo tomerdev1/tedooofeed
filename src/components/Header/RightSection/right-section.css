@@ -1,0 +1,23 @@
+.right-section {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: row;
+  gap: var(--default-gap);
+  align-items: end;
+  .user-icon {
+    align-self: center;
+    border-radius: var(--br-max);
+  }
+  .ant-tabs-tab {
+    padding-bottom: 18px;
+  }
+  .ant-tabs-nav {
+    margin: 0;
+  }
+
+  .ant-tabs-tab-btn {
+    display: flex;
+    align-items: center;
+    color: #949796;
+  }
+}

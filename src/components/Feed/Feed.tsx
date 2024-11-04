@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import { FeedData, FeedItemType } from "../types";
-import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
-import FeedItemWithImpression from "./FeedItemWithImpression";
+import { FeedData, FeedItemType } from "../../types";
+import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
+import FeedItemWithImpression from "../FeedItemWithImpression";
+import "./feed.css";
 
 const Feed: React.FC = () => {
   const [feedItems, setFeedItems] = useState<FeedItemType[]>([]);
