@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import "./feed.css";
-
 import { useInfiniteScroll } from "hooks/useInfiniteScroll";
 import { PostItemType } from "components/PostItem/PostContent/PostContent";
 import PostItem from "components/PostItem/PostItem";
@@ -22,7 +21,13 @@ const Feed: React.FC = () => {
       `https://backend.tedooo.com/hw/feed.json?skip=${skip}`
     );
     const data: FeedData = await response.json();
-    setPostItems((prev) => [...prev, ...data.data]);
+    setPostItems((prev) => {
+      const newItems = data.data.filter(
+        (newItem) => !prev.some((item) => item.id === newItem.id)
+      );
+      return [...prev, ...newItems];
+    });
+
     setHasMore(data.hasMore);
     setSkip((prev) => prev + 6);
   }, [hasMore, skip]);

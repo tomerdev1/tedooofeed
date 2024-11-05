@@ -6,11 +6,11 @@
   align-self: flex-end;
   .user-icon {
     align-self: center;
-    margin-bottom: 6px;
+    margin-bottom: var(--space-xs);
   }
   .ant-tabs-tab {
     padding-bottom: var(--space-md);
-    font-size: 16px;
+    font-size: var(--font-lg);
     font-family: "Poppins" !important;
   }
   .ant-tabs-nav {

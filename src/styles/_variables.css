@@ -1,13 +1,15 @@
 :root {
   --default-margin: 0 160px;
+  --space-xs: 6px;
   --space-sm: 12px;
   --space-md: 16px;
   --space-lg: 24px;
   --br-max: 9999px;
-  --primary-color: #2db8a1;
-  --blue: #0a66c2;
-  --border-color: #e9eaea;
+  --font-md: 14px;
   --font-lg: 16px;
+  --primary-color: #2db8a1;
+  --border-color: #e9eaea;
+  --blue: #0a66c2;
   --font-color-dd: #282f2d;
   --font-color-d: #484e4c;
   --font-color: #737877;
