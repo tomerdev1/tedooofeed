@@ -4,7 +4,7 @@ import { cn } from "utils";
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
-  size?: number | string; // Define the size prop
+  size?: number | string;
   isCircled?: boolean;
   isCover?: boolean;
 }
