@@ -1,0 +1,22 @@
+.post-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+  background-color: #b8c248;
+  &.centered {
+    width: 100%;
+  }
+  .post-image {
+    object-fit: cover;
+    height: 100%;
+    width: auto;
+    &.centered {
+      max-width: 100%;
+    }
+    &.split {
+      width: 50%;
+    }
+  }
+}

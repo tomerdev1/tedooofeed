@@ -1,0 +1,9 @@
+@import "../../styles/_variables.css";
+
+.feed {
+  margin: var(--default-margin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}

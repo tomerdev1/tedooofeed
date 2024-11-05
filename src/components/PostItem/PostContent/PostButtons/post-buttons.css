@@ -1,0 +1,16 @@
+.post-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .post-button {
+    font-weight: 500;
+    font-family: "DM Sans";
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+    &.did-liked {
+      color: var(--blue);
+    }
+  }
+}

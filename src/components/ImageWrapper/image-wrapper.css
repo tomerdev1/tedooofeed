@@ -1,0 +1,6 @@
+.isCircled {
+  border-radius: var(--br-max);
+}
+.isCover {
+  object-fit: cover;
+}

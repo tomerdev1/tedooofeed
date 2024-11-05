@@ -1,10 +1,16 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import { FeedData, FeedItemType } from "../types";
-import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
-import FeedItemWithImpression from "./FeedItemWithImpression";
+import "./feed.css";
+import { useInfiniteScroll } from "hooks/useInfiniteScroll";
+import { PostItemType } from "components/PostItem/PostContent/PostContent";
+import PostItem from "components/PostItem/PostItem";
+
+export type FeedData = {
+  data: PostItemType[];
+  hasMore: boolean;
+};
 
 const Feed: React.FC = () => {
-  const [feedItems, setFeedItems] = useState<FeedItemType[]>([]);
+  const [postItems, setPostItems] = useState<PostItemType[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const initialLoad = useRef(true);
   const [skip, setSkip] = useState(0);
@@ -15,7 +21,13 @@ const Feed: React.FC = () => {
       `https://backend.tedooo.com/hw/feed.json?skip=${skip}`
     );
     const data: FeedData = await response.json();
-    setFeedItems((prev) => [...prev, ...data.data]);
+    setPostItems((prev) => {
+      const newItems = data.data.filter(
+        (newItem) => !prev.some((item) => item.id === newItem.id)
+      );
+      return [...prev, ...newItems];
+    });
+
     setHasMore(data.hasMore);
     setSkip((prev) => prev + 6);
   }, [hasMore, skip]);
@@ -29,24 +41,24 @@ const Feed: React.FC = () => {
 
   const { isFetching } = useInfiniteScroll({ loadMore, hasMore });
 
-  const handleLike = (id: string, isLiked: boolean) => {
-    setFeedItems((prevItems) =>
+  const handleLike = useCallback((postId: string) => {
+    setPostItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id
+        item.id === postId
           ? {
               ...item,
-              isLiked,
-              totalLikes: isLiked ? item.likes + 1 : item.likes - 1,
+              didLike: !item.didLike,
+              likes: item.didLike ? item.likes - 1 : item.likes + 1,
             }
           : item
       )
     );
-  };
+  }, []);
 
   return (
     <div className="feed">
-      {feedItems.map((item) => (
-        <FeedItemWithImpression key={item.id} item={item} onLike={handleLike} />
+      {postItems.map((item) => (
+        <PostItem key={item.id} item={item} handleLike={handleLike} />
       ))}
       {isFetching && <div>Loading more...</div>}
     </div>
