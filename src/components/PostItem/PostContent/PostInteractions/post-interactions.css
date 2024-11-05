@@ -1,0 +1,15 @@
+.post-interactions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: var(--space-md);
+  color: var(--font-color);
+  font-size: 14px;
+  border-bottom: solid 1px var(--border-color);
+  .likes {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+  }
+}

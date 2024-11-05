@@ -1,8 +1,8 @@
-import IconWrapper from "../../IconWrapper";
+import ImageWrapper from "components/ImageWrapper/ImageWrapper";
 import "./left-section.css";
-import { Icons } from "../../../icons/icons";
 import { Input } from "antd";
-import ImageWrapper from "../../ImageWrapper/ImageWrapper";
+import IconWrapper from "components/IconWrapper";
+import { Icons } from "icons/icons";
 
 const LeftSection = () => {
   return (

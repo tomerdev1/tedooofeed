@@ -1,8 +1,8 @@
-import { Icons } from "../../../icons/icons";
+import { Icons } from "icons/icons";
 import "./right-section.css";
 import { Tabs, TabsProps } from "antd";
-import IconWrapper from "../../IconWrapper";
-import ImageWrapper from "../../ImageWrapper/ImageWrapper";
+import IconWrapper from "components/IconWrapper";
+import ImageWrapper from "components/ImageWrapper/ImageWrapper";
 
 const RightSection = () => {
   const getIcon = (id: number) => {
@@ -55,6 +55,7 @@ const RightSection = () => {
         src="/assets/images/user.jpeg"
         className="user-icon"
         isCircled
+        isCover
         size={40}
       />
     </div>

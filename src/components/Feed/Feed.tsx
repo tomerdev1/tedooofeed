@@ -1,11 +1,17 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import { FeedData, FeedItemType } from "../../types";
-import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
 import "./feed.css";
-import FeedItem from "../FeedItem/FeedItem";
+
+import { useInfiniteScroll } from "hooks/useInfiniteScroll";
+import { PostItemType } from "components/PostItem/PostContent/PostContent";
+import PostItem from "components/PostItem/PostItem";
+
+export type FeedData = {
+  data: PostItemType[];
+  hasMore: boolean;
+};
 
 const Feed: React.FC = () => {
-  const [feedItems, setFeedItems] = useState<FeedItemType[]>([]);
+  const [postItems, setPostItems] = useState<PostItemType[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const initialLoad = useRef(true);
   const [skip, setSkip] = useState(0);
@@ -16,7 +22,7 @@ const Feed: React.FC = () => {
       `https://backend.tedooo.com/hw/feed.json?skip=${skip}`
     );
     const data: FeedData = await response.json();
-    setFeedItems((prev) => [...prev, ...data.data]);
+    setPostItems((prev) => [...prev, ...data.data]);
     setHasMore(data.hasMore);
     setSkip((prev) => prev + 6);
   }, [hasMore, skip]);
@@ -30,24 +36,10 @@ const Feed: React.FC = () => {
 
   const { isFetching } = useInfiniteScroll({ loadMore, hasMore });
 
-  const handleLike = (id: string, isLiked: boolean) => {
-    setFeedItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              isLiked,
-              totalLikes: isLiked ? item.likes + 1 : item.likes - 1,
-            }
-          : item
-      )
-    );
-  };
-
   return (
     <div className="feed">
-      {feedItems.map((item) => (
-        <FeedItem key={item.id} item={item} onLike={handleLike} />
+      {postItems.map((item) => (
+        <PostItem key={item.id} item={item} />
       ))}
       {isFetching && <div>Loading more...</div>}
     </div>
