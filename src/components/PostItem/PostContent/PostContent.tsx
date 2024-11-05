@@ -19,9 +19,11 @@ export interface PostItemType {
   likes: number;
   didLike: boolean;
   premium: boolean;
+  handleLike: (id: string) => void;
 }
 
 const PostContent: React.FC<PostItemType> = ({
+  id,
   avatar,
   username,
   shopName,
@@ -31,6 +33,7 @@ const PostContent: React.FC<PostItemType> = ({
   likes,
   comments,
   didLike,
+  handleLike,
 }) => {
   return (
     <div className="post-content">
@@ -44,7 +47,7 @@ const PostContent: React.FC<PostItemType> = ({
       <PostImages images={images} />
       <div>
         <PostInteractions likes={likes} comments={comments} />
-        <PostButtons didLiked={didLike} />
+        <PostButtons id={id} didLiked={didLike} handleLike={handleLike} />
       </div>
     </div>
   );

@@ -36,10 +36,24 @@ const Feed: React.FC = () => {
 
   const { isFetching } = useInfiniteScroll({ loadMore, hasMore });
 
+  const handleLike = useCallback((postId: string) => {
+    setPostItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === postId
+          ? {
+              ...item,
+              didLike: !item.didLike,
+              likes: item.didLike ? item.likes - 1 : item.likes + 1,
+            }
+          : item
+      )
+    );
+  }, []);
+
   return (
     <div className="feed">
       {postItems.map((item) => (
-        <PostItem key={item.id} item={item} />
+        <PostItem key={item.id} item={item} handleLike={handleLike} />
       ))}
       {isFetching && <div>Loading more...</div>}
     </div>

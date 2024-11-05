@@ -9,7 +9,7 @@ interface UseInfiniteScrollProps {
 export const useInfiniteScroll = ({
   loadMore,
   hasMore,
-  threshold = 300,
+  threshold = 100,
 }: UseInfiniteScrollProps) => {
   const [isFetching, setIsFetching] = useState(false);
 

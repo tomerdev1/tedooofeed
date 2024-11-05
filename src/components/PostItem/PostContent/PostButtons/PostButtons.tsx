@@ -5,16 +5,19 @@ import IconWrapper from "components/IconWrapper";
 import { Icons } from "icons/icons";
 
 interface Props {
+  id: string;
   didLiked: boolean;
+  handleLike: (id: string) => void;
 }
 
-const PostButtons: React.FC<Props> = ({ didLiked }) => {
+const PostButtons: React.FC<Props> = ({ id, didLiked, handleLike }) => {
   return (
     <div className="post-buttons">
       <Button
         type="text"
         className={cn("post-button", didLiked && "did-liked")}
         icon={<IconWrapper size={18} icon={Icons.likeIcon} />}
+        onClick={() => handleLike(id)}
       >
         {didLiked ? "Liked" : "Like"}
       </Button>
